@@ -1,4 +1,4 @@
-name: merge
+name: main
 
 on:
   pull_request:
@@ -10,18 +10,20 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      -
+        name: Setup
         uses: actions/setup-go@v3
         with:
           go-version: '1.18'
           check-latest: true
           cache: true
           cache-dependency-path: go.sum
-      - name: Restore
-        run: make restore
+      -
+        name: Restore
+        run: go get .
       -
         name: Build
-        run: make
+        run: go build
       -
         name: Test
-        run: make test
+        run: go test -v -cover ./...
