@@ -28,4 +28,7 @@ jobs:
         run: go build
       -
         name: Test
-        run: go test -v -cover ./...
+        run: go test -race -coverprofile=coverage.txt -covermode=atomic
+      -
+        name: Codecov
+        uses: codecov/codecov-action@v3

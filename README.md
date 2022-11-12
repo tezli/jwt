@@ -1,6 +1,6 @@
 # JWT
 ![build](https://github.com/tezli/jwt/actions/workflows/build.yml/badge.svg)
-
+![codecov](https://codecov.io/gh/tezli/keygen/branch/main/graph/badge.svg?token=tNKcOjlxLo)](https://codecov.io/gh/codecov/example-go)
 
 Feature complete JWT library.
 
