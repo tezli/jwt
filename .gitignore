@@ -1,4 +1,5 @@
 .DS_Store
 .env
 __debug*
-coverage.out
+coverage.txt
+fixtures/*.token
