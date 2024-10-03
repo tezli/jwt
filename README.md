@@ -1,8 +1,8 @@
 # JWT
 ![build](https://github.com/tezli/jwt/actions/workflows/main.yml/badge.svg)
-![codecov](https://codecov.io/gh/tezli/jwt/graph/badge.svg?token=WDOECHPVZ0)(https://codecov.io/gh/tezli/jwt)
+[![codecov](https://codecov.io/gh/tezli/jwt/branch/main/graph/badge.svg?token=WDOECHPVZ0)](https://codecov.io/gh/tezli/jwt)
 
-Feature complete JWT library.
+Feature complete, zero dependecy JWT library.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
