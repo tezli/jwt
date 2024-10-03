@@ -18,10 +18,10 @@ jobs:
       - name: Build
         run: go build
 
-      - name: Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
       - name: Test
         run: go test -race -coverprofile=coverage.txt -covermode=atomic
+
+      - name: Codecov
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
