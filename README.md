@@ -31,7 +31,7 @@ func main() {
 	key := os.Getenv("JWT_PRIVATE_KEY")
 	privateKey, err := base64.StdEncoding.DecodeString(key)
 	if err != nil {
-		log.Fatalf("Could read private key: %s", err.Error())
+		log.Fatalf("Could not read private key: %s", err.Error())
 	}
 
 	// selecting an algoithm
