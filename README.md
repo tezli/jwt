@@ -1,6 +1,5 @@
 # JWT
-![build](https://github.com/tezli/jwt/actions/workflows/main.yml/badge.svg)
-[![codecov](https://codecov.io/gh/tezli/jwt/branch/main/graph/badge.svg)](https://codecov.io/gh/tezli/jwt)
+![build](https://github.com/tezli/jwt/actions/workflows/main.yml/badge.svg)[![codecov](https://codecov.io/gh/tezli/jwt/graph/badge.svg?token=WDOECHPVZ0)](https://codecov.io/gh/tezli/jwt)
 
 Feature complete JWT library.
 
