@@ -44,7 +44,6 @@ var JWT_ECDS_MAP = map[string]string{
 	JWT_ES512: ECDSA_P521,
 }
 
-// ES512 provides methods for signing and verifying JWTs with ECDSA521 and SHA512
 type _ecdsa struct {
 	privateKey *ecdsa.PrivateKey
 	publicKey  *ecdsa.PublicKey
@@ -52,10 +51,9 @@ type _ecdsa struct {
 	name       string
 }
 
-// newECDSA creates a new ECDSA helper from a private key
 func newECDSA(name string, key []byte, hash crypto.Hash) (*_ecdsa, error) {
 	if key == nil {
-		return nil, errors.New("key is empty")
+		return nil, errors.New("Key is empty")
 	}
 	block, rest := pem.Decode(key)
 	if block == nil {
@@ -76,7 +74,6 @@ func newECDSA(name string, key []byte, hash crypto.Hash) (*_ecdsa, error) {
 	return &_ecdsa{privateKey, &privateKey.PublicKey, hash, name}, nil
 }
 
-// Sign signs arbitrary data and returns a signature
 func (e *_ecdsa) sign(data []byte) ([]byte, error) {
 	hash := e.hash.New()
 	hash.Write(data)
@@ -84,7 +81,6 @@ func (e *_ecdsa) sign(data []byte) ([]byte, error) {
 	return ecdsa.SignASN1(rand.Reader, e.privateKey, sum)
 }
 
-// Verify verifies signed data
 func (e *_ecdsa) verify(data []byte, signature []byte) error {
 	hash := e.hash.New()
 	hash.Write(data)

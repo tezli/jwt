@@ -25,12 +25,12 @@ package jwt
 
 import "crypto"
 
-// RS256 provides methods for signing and verifying JWTs with ECDSA521 and SHA512
+// RS256 provides methods for signing and verifying JWTs with RSASSA-PKCS1 using SHA-256.
 type RS256 struct {
 	rsa *_rsa
 }
 
-// NewRS256 creates a new ES512 helper from a RSA private key. The private key must be PEM encoded.
+// NewRS256 creates a new RS256 helper from a RSA private key. The private key must be PEM encoded.
 func NewRS256(key []byte) (*RS256, error) {
 	rsa, err := newRSA(JWT_RS256, key, crypto.SHA256)
 	if err != nil {

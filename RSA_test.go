@@ -31,7 +31,7 @@ import (
 func TestRSA(t *testing.T) {
 	key, _ := readFixture("rsa")
 	data := []byte("test")
-	rsa, err := newRSA("RS256", key, crypto.SHA256)
+	rsa, err := newRSA(JWT_RS256, key, crypto.SHA256)
 	if err != nil {
 		t.Log(err)
 		t.Fail()
@@ -51,7 +51,7 @@ func TestRSA(t *testing.T) {
 func TestRSAInvalidData(t *testing.T) {
 	key, _ := readFixture("rsa")
 	data1 := []byte("test")
-	rsa, err := newRSA("RS256", key, crypto.SHA256)
+	rsa, err := newRSA(JWT_RS256, key, crypto.SHA256)
 	if err != nil {
 		t.Log(err)
 		t.Fail()
@@ -71,7 +71,7 @@ func TestRSAInvalidData(t *testing.T) {
 
 func TestRSAMultiblock(t *testing.T) {
 	key, _ := readFixture("rsa.multiblock")
-	_, err := newRSA("RS256", key, crypto.SHA256)
+	_, err := newRSA(JWT_RS256, key, crypto.SHA256)
 	if err == nil {
 		t.Log(err)
 		t.Fail()
@@ -80,7 +80,7 @@ func TestRSAMultiblock(t *testing.T) {
 
 func TestRSAInvalidPrivateKey(t *testing.T) {
 	key, _ := readFixture("rsa.pub")
-	_, err := newRSA("RS256", key, crypto.SHA256)
+	_, err := newRSA(JWT_RS256, key, crypto.SHA256)
 	if err == nil {
 		t.Log(err)
 		t.Fail()

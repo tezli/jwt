@@ -25,10 +25,12 @@ package jwt
 
 import "crypto"
 
+// HS512 provides methods for signing and verifying JWTs with HMAC using SHA-512.
 type HS512 struct {
 	hmac *HMAC
 }
 
+// NewHS512 creates a new HS512 helper from a secret.
 func NewHS512(secret []byte) (*HS512, error) {
 	hmac, err := newHMAC(JWT_HS512, secret, crypto.SHA512)
 	if err != nil {
@@ -37,14 +39,17 @@ func NewHS512(secret []byte) (*HS512, error) {
 	return &HS512{hmac}, nil
 }
 
+// Sign signs arbitrary data and returns a signature.
 func (alg *HS512) Sign(data []byte) ([]byte, error) {
 	return alg.hmac.sign(data)
 }
 
+// Verify verifies signed data.
 func (alg *HS512) Verify(code, data []byte) error {
 	return alg.hmac.verify(code, data)
 }
 
+// Name returns the the JWT algorithm name.
 func (alg *HS512) Name() string {
 	return alg.hmac.name
 }

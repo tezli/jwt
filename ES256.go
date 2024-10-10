@@ -25,7 +25,7 @@ package jwt
 
 import "crypto"
 
-// ES512 provides methods for signing and verifying JWT sof type ES256.
+// ES512 provides methods for signing and verifying JWTs with ECDSA using P-256 and SHA-256.
 type ES256 struct {
 	ecdsa *_ecdsa
 }

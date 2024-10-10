@@ -25,12 +25,12 @@ package jwt
 
 import "crypto"
 
-// RS384 provides methods for signing and verifying JWTs of type RS384.
+// RS384 provides methods for signing and verifying JWTs with RSASSA-PKCS1 using SHA-384.
 type RS384 struct {
 	rsa *_rsa
 }
 
-// NewRS384 creates a new ES512 helper from a RSA private key. The private key must be PEM encoded.
+// NewRS384 creates a new RS384 helper from a RSA private key. The private key must be PEM encoded.
 func NewRS384(key []byte) (*RS384, error) {
 	rsa, err := newRSA(JWT_RS384, key, crypto.SHA384)
 	if err != nil {

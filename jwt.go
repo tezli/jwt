@@ -51,14 +51,18 @@ var algorithms = []string{
 	JWT_PS256, JWT_PS348, JWT_PS512, JWT_RS256, JWT_RS384, JWT_RS512,
 }
 
-// Algorithm an abitrary JWT alogithm
+// Algorithm represents one of the supported JWT alogrithms:
+// ECDSA-SHA:        ES256, ES348, ES512
+// HMAC-SHA:         HS256, HS348, HS512
+// RSASSA-PSS-SHA:   PS256, PS348, PS512
+// RSASSA-PKCS1-SHA: RS256, RS384, RS512
 type Algorithm interface {
 	Sign([]byte) ([]byte, error)
 	Verify([]byte, []byte) error
 	Name() string
 }
 
-// JwtCkaims represents jwt standard claims
+// JwtCkaims represents JWT standard claims
 type Claims struct {
 	Expires   int64                  `json:"exp"`
 	IssuedAt  int64                  `json:"iat"`
@@ -69,25 +73,26 @@ type Claims struct {
 	Raw       map[string]interface{} `json:"-"`
 }
 
-// JwtHeader represents a jwt header
+// JwtHeader represents a JWT header
 type JwtHeader struct {
 	Alg string `json:"alg"`
 	Typ string `json:"typ"`
 }
 
+// JwtToken represents a JWT token
 type JwtToken struct {
 	Header    JwtHeader `json:"header"`
 	Claims    Claims    `json:"claims"`
 	signature []byte    `json:"-"`
 }
 
-// CreateToken returns a JWT. First argument are the claims, second the private key
+// CreateToken returns a JWT. First argument is the claims, second the private key.
 func Create(claims *Claims, algorithm Algorithm) (string, error) {
 	if claims == nil {
 		claims = &Claims{}
 	}
 	if algorithm == nil {
-		return "", errors.New("algorithm can't be nil")
+		return "", errors.New("Algorithm can't be nil")
 	}
 	jwtHeader := &JwtHeader{
 		Alg: algorithm.Name(),
@@ -117,6 +122,7 @@ func Create(claims *Claims, algorithm Algorithm) (string, error) {
 	return encodedHeader + "." + encodedPayload + "." + encodedSignature, err
 }
 
+// Parse parses a JWT token from a string.
 func Parse(token string, alg Algorithm) (*JwtToken, error) {
 	splitted := strings.Split(token, ".")
 	if len(splitted) != 3 {
@@ -179,6 +185,7 @@ func Parse(token string, alg Algorithm) (*JwtToken, error) {
 	return &JwtToken{jwtHeader, claims, signature}, nil
 }
 
+// IsExpired checks if a token is expired.
 func (t *JwtToken) IsExpired() bool {
 	now := time.Now().Unix()
 	return t.Claims.Expires < now

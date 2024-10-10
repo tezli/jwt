@@ -61,7 +61,7 @@ func (e *HMAC) verify(data, mac []byte) error {
 	sum := hash.Sum(nil)
 	verified := hmac.Equal(mac, sum)
 	if verified == false {
-		return errors.New("Token could not be verfify")
+		return errors.New("Token could not be verfified")
 	}
 	return nil
 }

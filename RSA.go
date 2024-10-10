@@ -41,7 +41,7 @@ type _rsa struct {
 
 func newRSA(name string, key []byte, hash crypto.Hash) (*_rsa, error) {
 	if key == nil {
-		return nil, errors.New("key is empty")
+		return nil, errors.New("Key is empty")
 	}
 	block, rest := pem.Decode(key)
 	if block == nil {

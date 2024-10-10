@@ -25,7 +25,7 @@ package jwt
 
 import "crypto"
 
-// RS512 provides methods for signing and verifying JWTs of type RS512
+// RS512 provides methods for signing and verifying JWTs with RSASSA-PKCS1 using SHA-512.
 type RS512 struct {
 	rsa *_rsa
 }

@@ -25,10 +25,12 @@ package jwt
 
 import "crypto"
 
+// HS384 provides methods for signing and verifying JWTs with HMAC using SHA-384.
 type HS384 struct {
 	hmac *HMAC
 }
 
+// NewHS384 creates a new HS384 helper from a secret.
 func NewHS384(secret []byte) (*HS384, error) {
 	hmac, err := newHMAC(JWT_HS348, secret, crypto.SHA384)
 	if err != nil {
@@ -37,14 +39,17 @@ func NewHS384(secret []byte) (*HS384, error) {
 	return &HS384{hmac}, nil
 }
 
+// Sign signs arbitrary data and returns a signature.
 func (alg *HS384) Sign(data []byte) ([]byte, error) {
 	return alg.hmac.sign(data)
 }
 
+// Verify verifies signed data.
 func (alg *HS384) Verify(code, data []byte) error {
 	return alg.hmac.verify(code, data)
 }
 
+// Name returns the the JWT algorithm name.
 func (alg *HS384) Name() string {
 	return alg.hmac.name
 }

@@ -25,7 +25,7 @@ package jwt
 
 import "crypto"
 
-// ES384 provides methods for signing and verifying JWTs of type ES384.
+// ES384 provides methods for signing and verifying JWTs with ECDSA using P-384 and SHA-384.
 type ES384 struct {
 	ecdsa *_ecdsa
 }

@@ -42,7 +42,7 @@ type _rsapss struct {
 
 func newRSAPSS(name string, key []byte, hash crypto.Hash) (*_rsapss, error) {
 	if key == nil {
-		return nil, errors.New("key is empty")
+		return nil, errors.New("Key is empty")
 	}
 	block, rest := pem.Decode(key)
 	if block == nil {
