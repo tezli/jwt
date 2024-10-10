@@ -81,6 +81,7 @@ func (e *_ecdsa) sign(data []byte) ([]byte, error) {
 	return ecdsa.SignASN1(rand.Reader, e.privateKey, sum)
 }
 
+// Verify Verifies signed data
 func (e *_ecdsa) verify(data []byte, signature []byte) error {
 	hash := e.hash.New()
 	hash.Write(data)

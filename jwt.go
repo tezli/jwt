@@ -51,11 +51,12 @@ var algorithms = []string{
 	JWT_PS256, JWT_PS348, JWT_PS512, JWT_RS256, JWT_RS384, JWT_RS512,
 }
 
-// Algorithm represents one of the supported JWT alogrithms:
+// Algorithm representing one of the supported JWT alogrithms:
 // ECDSA-SHA:        ES256, ES348, ES512
 // HMAC-SHA:         HS256, HS348, HS512
 // RSASSA-PSS-SHA:   PS256, PS348, PS512
 // RSASSA-PKCS1-SHA: RS256, RS384, RS512
+// None is not supported
 type Algorithm interface {
 	Sign([]byte) ([]byte, error)
 	Verify([]byte, []byte) error

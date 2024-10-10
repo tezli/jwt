@@ -64,7 +64,7 @@ func TestHMACNilSecret(t *testing.T) {
 	}
 }
 
-func TestHMACVerfiyFailure(t *testing.T) {
+func TestHMACVerifyFailure(t *testing.T) {
 	hmac, err := newHMAC(JWT_HS256, []byte("secret"), crypto.SHA256)
 	err = hmac.verify([]byte("invalid"), []byte("invalid"))
 	if err == nil {
